@@ -1,0 +1,8 @@
+# view AndroidManifest.xml #generated:6
+-keep class com.musicplayer.test_musicplayer { <init>(...); }
+
+# onClick res/layout/include_home_tabfoot.xml #generated:10
+# onClick res/layout/include_home_tabfoot.xml #generated:18
+# onClick res/layout/include_home_tabfoot.xml #generated:26
+-keepclassmembers class * { *** tabOnclick(...); }
+
