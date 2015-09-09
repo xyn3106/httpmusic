@@ -1,21 +1,25 @@
 package com.musicplayer;  
   
-import android.app.Activity;  
+
+
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.View;  
-import android.view.View.OnClickListener;  
-import android.widget.Button;  
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Toast;  
   
 public class test_musicplayer extends Activity {  
-    private Button btnPause, btnPlayUrl, btnStop;  
+    private Button btnNext, btnPlay, btnStop;  
+    private EditText UrlText;
     private SeekBar skbProgress;  
     private Player player;  
     private long exitTime = 0;
-    
     boolean canplay=true;
+    boolean isplaying=false;
   
     /** Called when the activity is first created. */  
     @Override  
@@ -25,14 +29,13 @@ public class test_musicplayer extends Activity {
     
         this.setTitle("MediaPlayer+HttpProxy");  
   
-        btnPlayUrl = (Button) this.findViewById(R.id.btnPlayUrl);  
-        btnPlayUrl.setOnClickListener(new ClickEvent());  
+        btnPlay = (Button) this.findViewById(R.id.btnPlayUrl);  
+        btnPlay.setOnClickListener(new ClickEvent());  
   
-        btnPause = (Button) this.findViewById(R.id.btnPause);  
-        btnPause.setOnClickListener(new ClickEvent());  
+        btnNext = (Button) this.findViewById(R.id.btnNext);  
+        btnNext.setOnClickListener(new ClickEvent());  
   
-//        btnStop = (Button) this.findViewById(R.id.btnStop);  
-//        btnStop.setOnClickListener(new ClickEvent());  
+        UrlText = (EditText)this.findViewById(R.id.edit_text);
  
         skbProgress = (SeekBar) this.findViewById(R.id.skbProgress);  
         skbProgress.setOnSeekBarChangeListener(new SeekBarChangeEvent());  
@@ -59,28 +62,55 @@ public class test_musicplayer extends Activity {
 		return super.onKeyDown(keyCode, event);
 	}
     
-    class ClickEvent implements OnClickListener {  
+    class ClickEvent implements OnClickListener {
   
         @Override  
-        public void onClick(View arg0) {  
-        	if (arg0 == btnPause) {
-                player.pause();
-            } else if (arg0 == btnPlayUrl) {
+        public void onClick(View arg0) {
+        	if (arg0 == btnNext) {
+        		//todo
+            } 
+        	else if (arg0 == btnPlay) {
             	if(canplay==true)
             	{
-                String url="http://www.kfybsf.com/mp3/liangzhu.mp3";
+            	String url = UrlText.getText().toString();
+//                String url="http://www.kfybsf.com/mp3/liangzhu.mp3";
 //            		String url="http://conteadiwagner.com/audio/sf.mp3"; //长
-                player.playUrl(url);  
+                player.playUrl(url);
+                isplaying=true;
+                refreshBottomBar();
                 canplay=false;
             	}
-            	else
+            	else{
+            		if(isplaying==true){
+            			player.pause();
+            			isplaying=false;
+            			refreshBottomBar();
+            		}
+            		else{
             		player.play();
-            } else if (arg0 == btnStop) {
-                player.stop();
-                canplay=true;
-            }
-        }
-    }  
+            		isplaying=true;
+            		refreshBottomBar();
+            		}
+            		}
+            	}
+        	}
+    }
+        
+        private void refreshBottomBar() {
+//          Player player = Player.getPlayer();
+         if(isplaying==false){
+//              mImg.setImageResource(R.drawable.img_noplaying);
+      	   btnPlay.setBackgroundResource(R.drawable.selector_btn_play);
+              }
+//              mTvTitle.setText(player.getMusic().getTitle());
+//              mTvArtist.setText(player.getMusic().getArtist());
+         if(isplaying==true){
+//              mImg.setImageResource(R.drawable.img_playing);
+      	   btnPlay.setBackgroundResource(R.drawable.selector_btn_pause);
+//              mTvTitle.setText(player.getMusic().getTitle());
+//              mTvArtist.setText(player.getMusic().getArtist());
+              }
+         }
   
     class SeekBarChangeEvent implements SeekBar.OnSeekBarChangeListener {  
         int progress;  
@@ -101,4 +131,4 @@ public class test_musicplayer extends Activity {
             player.mediaPlayer.seekTo(progress);  
         }  
     }  
-}  
+}

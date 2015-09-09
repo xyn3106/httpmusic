@@ -17,7 +17,7 @@
 	    android:id="@+id/edit_text"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:hint="http://www.kfybsf.com/mp3/liangzhu.mp3"/> 
+	    android:text="http://www.kfybsf.com/mp3/liangzhu.mp3"/> 
 	    </LinearLayout>
 	
 	<LinearLayout 
@@ -25,6 +25,22 @@
 		android:layout_width="fill_parent" 
 		android:orientation="vertical"
 		android:layout_gravity="bottom">
+	
+	    <LinearLayout 
+		    android:orientation="horizontal"
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content">
+			<SeekBar 
+			    android:paddingRight="10dip" 
+			    android:layout_gravity="center_vertical"
+				android:paddingLeft="10dip" 
+				android:layout_weight="1.0"
+				android:id="@+id/skbProgress" 
+				android:max="100"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+		</LinearLayout>
+		
 		<LinearLayout 
 		    android:orientation="horizontal"
 			android:layout_gravity="center_horizontal" 
@@ -45,25 +61,9 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="3dp"
-				android:id="@+id/btnPause"
+				android:id="@+id/btnNext"
         android:background="@drawable/selector_btn_next"></Button>
             
-		</LinearLayout>
-		
-		<LinearLayout 
-		    android:orientation="horizontal"
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content">
-			<SeekBar 
-			    android:paddingRight="10dip" 
-			    android:layout_gravity="center_vertical"
-				android:paddingLeft="10dip" 
-				android:layout_weight="1.0"
-				android:layout_height="wrap_content"
-				android:layout_width="wrap_content"
-				android:id="@+id/skbProgress" 
-				android:max="100"></SeekBar>
-			
 		</LinearLayout>
 		
 		<include
