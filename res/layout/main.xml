@@ -5,9 +5,26 @@
 	<LinearLayout 
 	    android:layout_height="wrap_content"
 		android:layout_width="fill_parent" 
+		android:orientation="vertical">
+	<TextView
+            android:id="@+id/phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="网络流媒体URL：" />
+	<EditText
+	    android:id="@+id/edit_text"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="http://www.kfybsf.com/mp3/liangzhu.mp3"/> 
+	    </LinearLayout>
+	
+	<LinearLayout 
+	    android:layout_height="wrap_content"
+		android:layout_width="fill_parent" 
 		android:orientation="vertical"
-		android:layout_gravity="bottom"
-		>
+		android:layout_gravity="bottom">
 		<LinearLayout 
 		    android:orientation="horizontal"
 			android:layout_gravity="center_horizontal" 
@@ -16,20 +33,20 @@
 			android:layout_width="wrap_content"
 			>
 			<Button 
-			    android:layout_width="wrap_content"
-				android:layout_height="wrap_content" 
+			    android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerVertical="true"
 				android:id="@+id/btnPlayUrl"
-				android:text="播放"></Button>
+        android:background="@drawable/selector_btn_play"
+        android:layout_toLeftOf="@+id/btnPause"></Button>
 			<Button 
-			    android:layout_width="wrap_content"
-				android:layout_height="wrap_content" 
+			    android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="3dp"
 				android:id="@+id/btnPause"
-				android:text="暂停"></Button>
-            <Button 
-                android:layout_height="wrap_content"  
-                android:layout_width="wrap_content" 
-                android:text="停止" 
-                android:id="@+id/btnStop"></Button>
+        android:background="@drawable/selector_btn_next"></Button>
             
 		</LinearLayout>
 		
